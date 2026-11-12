@@ -1,5 +1,6 @@
 services:
   postgresql:
+    # note: this image requires a RedHat login to pull
     image: registry.redhat.io/rhel10/postgresql-16
     environment:
       POSTGRESQL_USER: "user"
@@ -12,7 +13,8 @@ services:
     restart: unless-stopped
 
   keycloak:
-    image: quay.io/keycloak/keycloak:26.4.2
+    # update this image to the latest version when a new release is available
+    image: quay.io/keycloak/keycloak:26.8.2
     command: ["start-dev", "--import-realm"]
     environment:
       KC_BOOTSTRAP_ADMIN_USERNAME: "admin"
